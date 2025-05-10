@@ -1,0 +1,10 @@
+^D:\CODEFAMILY\VSCODE\C++\SKYENGINE\BUILD\CMAKEFILES\244D15DFC05057F7D46C8A39D8177DF3\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/CodeFamily/VSCode/C++/SkyEngine -BD:/CodeFamily/VSCode/C++/SkyEngine/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/CodeFamily/VSCode/C++/SkyEngine/build/SKYPROJECT.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

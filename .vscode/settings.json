@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "algorithm": "cpp",
+        "charconv": "cpp",
+        "ios": "cpp",
+        "istream": "cpp",
+        "xstring": "cpp",
+        "*.tcc": "cpp",
+        "unordered_map": "cpp",
+        "numeric": "cpp",
+        "ostream": "cpp",
+        "sstream": "cpp",
+        "xmemory": "cpp",
+        "vector": "cpp",
+        "cmath": "cpp"
+    }
+}

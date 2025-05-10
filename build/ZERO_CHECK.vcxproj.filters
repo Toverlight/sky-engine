@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\CodeFamily\VSCode\C++\SkyEngine\build\CMakeFiles\244d15dfc05057f7d46c8a39d8177df3\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{75A929BB-6335-320E-9005-281B91BB904F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
