@@ -1,8 +1,12 @@
 #include "game.h"
 #include "scene.h"
-
-void Game::run()
+void Game::run(Scene* scene)
 {
+    if (!scene) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Cannot run game without a scene!\n");
+        return;
+    }
+    _current_scene = scene;
     while (_is_running) {
         auto start = SDL_GetTicksNS();
         if (_next_scene) {
@@ -65,10 +69,9 @@ Game::~Game()
      if (_current_scene) {
         delete _current_scene;
     }
-    // if (asset_store_) {
-    //     asset_store_->clean();
-    //     delete asset_store_;
-    // }
+    if (_asset_store) {
+        delete _asset_store;
+    }
     // 释放渲染器和窗口
     if (_ttf_engine) {
         TTF_DestroyRendererTextEngine(_ttf_engine);
@@ -136,6 +139,6 @@ void Game::init(std::string title, int width, int height)
     _frame_delay = 1000000000 / _FPS;
 
     // 创建资源管理器
-    // _asset_store = new AssetStore(_renderer);
+    _asset_store = new AssetStore(_renderer);
 
 }

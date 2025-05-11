@@ -34,6 +34,8 @@ bool Scene::handleEvents(SDL_Event &event)
 
 void Scene::update(float dt)
 {
+    _camera.is_dirty = _need_camera_dirty;
+    _need_camera_dirty = false;
     if (!_to_be_added.empty()) {
         for (auto child : _to_be_added)
         {
@@ -50,15 +52,43 @@ void Scene::update(float dt)
         _to_be_added.clear();
     }
     if (!_is_paused) {
-        for (auto child : _children_world)
+        for (auto it = _children_world.begin(); it != _children_world.end(); ++it)
         {
-            if (child && child->isActive()) {
+            ObjectWorld* child = *it;
+            if (child) {
+                if (!child->isActive()) {
+                    continue;
+                }
+                if (child->getNeedRemove()) {
+                    delete child;
+                    it = _children_world.erase(it);
+                    continue;
+                }
+            } else {
+                it = _children_world.erase(it);
+                continue;
+            }
+            if (child) {
                 child->update(dt);
             }
         }
-        for (auto child : _children_screen)
+        for (auto it = _children_screen.begin(); it != _children_screen.end(); ++it)
         {
-            if (child && child->isActive()) {
+            ObjectScreen* child = *it;
+            if (child) {
+                if (!child->isActive()) {
+                    continue;
+                }
+                if (child->getNeedRemove()) {
+                    delete child;
+                    it = _children_screen.erase(it);
+                    continue;
+                }
+            } else {
+                it = _children_screen.erase(it);
+                continue;
+            }
+            if (child) {
                 child->update(dt);
             }
         }

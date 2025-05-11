@@ -7,10 +7,13 @@
 #include <glm/glm.hpp>
 #include <string>
 #include <random>
+#include "asset_store.h"
 
 class Scene;
 class Game
 {
+    AssetStore* _asset_store = nullptr; // 资源管理器
+
     glm::vec2 _resolution = glm::vec2(0); // 逻辑分辨率
     glm::vec2 _mouse_position = glm::vec2(0); // 鼠标位置
     SDL_MouseButtonFlags _mouse_button_state = SDL_BUTTON_LEFT; // 鼠标按键状态
@@ -29,7 +32,7 @@ class Game
     std::mt19937 _gen = std::mt19937(std::random_device{}()); // 随机数生成器
 public:
     void init(std::string title, int width, int height);    
-    void run();
+    void run(Scene* scene);
     void handleEvents(); // 处理事件
     void update(float dt); // 更新游戏状态
     void render(); // 渲染游戏
@@ -44,6 +47,9 @@ public:
     void setNextScene(Scene* scene) { _next_scene = scene; }
 
     glm::vec2 getResolution() const { return _resolution; }
+    AssetStore* getAssetStore() { return _asset_store; }
+
+    SDL_Renderer* getRenderer() { return _renderer; }
 
 private:
     // 私有构造函数

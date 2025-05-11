@@ -22,9 +22,11 @@ public:
     
     bool isActive() const { return _is_active; }
     void setActive(bool active) { _is_active = active; }
-    void toRemove() { _need_remove = true; }
-
+    bool getNeedRemove() const { return _need_remove; }
+    
     virtual void toAddChild(Object* child) { _to_be_added.push_back(child); }
+    void toRemove() { _need_remove = true; }
+    // 仅从列表中删除
     virtual void removeChild(Object* child) { _children.erase(std::remove(_children.begin(), _children.end(), child), _children.end()); }
 
 };

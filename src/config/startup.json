@@ -1,0 +1,9 @@
+{
+    "title": "My Game",
+    "startup_scene": "SceneInit",
+    "window_width": 1280,
+    "window_height": 720,
+    "fullscreen": false,
+    "mode": "debug",
+    "asset_path": "assets/"
+}

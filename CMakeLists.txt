@@ -29,7 +29,14 @@ find_package(SDL3_mixer REQUIRED)
 find_package(SDL3_ttf REQUIRED)
 find_package(glm REQUIRED)
 
-file(GLOB SOURCES src/core/*.cpp src/project/*.cpp)
+include_directories(src/dep)
+
+file(GLOB SOURCES 
+    src/core/*.cpp 
+    src/project/*.cpp
+    )
+
+message("Source files: ${SOURCES}")
 
 # 添加可执行文件
 add_executable(${TARGET} ${SOURCES})
