@@ -1,9 +1,23 @@
 #pragma once
 
+#include <string>
 #include "object_affiliate.h"
+#include "texture.h"
 
 class Sprite : public ObjectAffiliate
 {
-    // TODO: 添加精灵的属性和方法
+protected:
+    Texture _texture; // 纹理
+
+public:
+    Sprite() = default;
+    virtual ~Sprite() = default;
+
+    static Sprite* createAndAffiliate(ObjectScreen* parent, const std::string& texture_path, const glm::vec2& scale = glm::vec2(1.0f), Anchor anchor = Anchor::CENTER);
+
+    virtual void render() override;
+
+    void setTexture(const Texture& texture);
+    Texture getTexture() { return _texture; }
 
 };

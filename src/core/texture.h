@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL3/SDL.h>
 #include <glm/glm.hpp>
+#include <string>
 
 struct Texture
 {
@@ -10,4 +11,7 @@ struct Texture
     float angle = 0.0f; // 旋转角度
     SDL_FRect clip = { 0, 0, 0, 0 }; // 裁剪区域
     bool is_flipped = false; // 是否翻转
+
+    Texture() = default;
+    Texture(const std::string& path);
 };

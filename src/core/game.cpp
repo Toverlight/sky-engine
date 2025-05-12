@@ -7,6 +7,7 @@ void Game::run(Scene* scene)
         return;
     }
     _current_scene = scene;
+    _current_scene->init();
     while (_is_running) {
         auto start = SDL_GetTicksNS();
         if (_next_scene) {

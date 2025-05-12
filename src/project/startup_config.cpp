@@ -5,7 +5,7 @@
 bool loadStartupConfig(StartupConfig &config)
 {
     try {
-        std::ifstream in("src/config/startup.json");
+        std::ifstream in("config/startup.json");
         if (!in.is_open()) {
             return false;
         }
