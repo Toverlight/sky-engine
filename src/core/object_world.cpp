@@ -28,10 +28,10 @@ void ObjectWorld::render()
 glm::vec2 ObjectWorld::getPosScreen()
 {
     Camera& camera = Game::getInstance().getCurrentScene()->getCamera();
-    if (!_is_pos_screen_dirty && !camera.is_dirty) return _pos_screen;
+    if (!_is_pos_screen_dirty && !camera.isDirty()) return _pos_screen;
     _is_pos_screen_dirty = false;
     // 根据屏幕分辨率、相机位置、相机缩放、相机旋转和世界坐标计算屏幕坐标
-    return Math::rotateVec2(_pos_world - camera.position, -camera.rotation) * camera.zoom + Game::getInstance().getResolution() / 2.0f;
+    return Math::rotateVec2(_pos_world - camera.getPosition(), -camera.getRotation()) * camera.getZoom() + Game::getInstance().getResolution() / 2.0f;
 }
 
 void ObjectWorld::setPosScreen(const glm::vec2 &pos)
@@ -47,7 +47,7 @@ glm::vec2 ObjectWorld::getPosWorld()
     _is_pos_world_dirty = false;
     Camera& camera = Game::getInstance().getCurrentScene()->getCamera();
     // 根据屏幕分辨率、相机位置、相机缩放、相机旋转和屏幕坐标计算世界坐标
-    return Math::rotateVec2((_pos_screen - Game::getInstance().getResolution() / 2.0f) / camera.zoom, camera.rotation) + camera.position;
+    return Math::rotateVec2((_pos_screen - Game::getInstance().getResolution() / 2.0f) / camera.getZoom(), camera.getRotation()) + camera.getPosition();
 }
 
 void ObjectWorld::setPosWorld(const glm::vec2 &pos)

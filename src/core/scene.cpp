@@ -4,6 +4,7 @@
 void Scene::init()
 {
     Object::init();
+    _camera.setScene(this);
     _children_screen.reserve(INIT_SCENE_SCREEN_OBJECTS);
     _children_world.reserve(INIT_SCENE_WORLD_OBJECTS);
 }
@@ -34,7 +35,7 @@ bool Scene::handleEvents(SDL_Event &event)
 
 void Scene::update(float dt)
 {
-    _camera.is_dirty = _need_camera_dirty;
+    _camera.setDirty(_need_camera_dirty);
     _need_camera_dirty = false;
     if (!_to_be_added.empty()) {
         for (auto child : _to_be_added)
