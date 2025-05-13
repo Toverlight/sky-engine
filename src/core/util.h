@@ -8,9 +8,18 @@ namespace Math {
 }
 
 namespace Graphics {
-    void renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size, SDL_Renderer* renderer = Game::getInstance().getRenderer());
+    /// @brief 渲染纹理
+    /// @param texture 纹理
+    /// @param position 左上角位置
+    /// @param renderer 渲染器
+    void renderTexture(const Texture& texture, const glm::vec2& position, SDL_Renderer* renderer = Game::getInstance().getRenderer());
     // TODO: 添加更多渲染函数
     // 例如：渲染文本、渲染多边形等
+    /*
+    绘制线条
+    绘制多个连接的线段
+    绘制文本
+    */
 }
 
 namespace Audio {

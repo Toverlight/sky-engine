@@ -19,5 +19,6 @@ public:
 
     void setTexture(const Texture& texture);
     Texture getTexture() { return _texture; }
+    virtual glm::vec2 getOffset() override;
 
 };

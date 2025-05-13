@@ -16,7 +16,7 @@ Sprite *Sprite::createAndAffiliate(ObjectScreen *parent, const std::string &text
 void Sprite::render()
 {
     if (_texture.texture && _parent) {
-        Graphics::renderTexture(_texture, _parent->getPosScreen() + getOffset(), getSize());
+        Graphics::renderTexture(_texture, _parent->getPosScreen() + getOffset());
     }
 }
 
@@ -24,4 +24,11 @@ void Sprite::setTexture(const Texture &texture)
 {
     _texture = texture;
     _texture.size = glm::vec2(_texture.clip.w, _texture.clip.h);
+    setSize(_texture.size);
+}
+
+glm::vec2 Sprite::getOffset()
+{
+    if (_is_offset_dirty) _texture.size = _size * _scale;
+    return ObjectAffiliate::getOffset();
 }

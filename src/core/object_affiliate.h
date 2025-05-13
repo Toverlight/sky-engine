@@ -21,7 +21,7 @@ public:
     void setParent(ObjectScreen* parent) { _parent = parent; }
     ObjectScreen* getParent() { return _parent; }
     void setOffset(const glm::vec2& offset);
-    glm::vec2 getOffset();
+    virtual glm::vec2 getOffset();
     void setSize(const glm::vec2& size);
     glm::vec2 getSize() { return _size; }
     void setScale(const glm::vec2& scale);

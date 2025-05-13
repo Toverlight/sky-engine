@@ -10,6 +10,18 @@ struct StartupConfig
     bool fullscreen = false; // 是否全屏
     std::string mode = "debug"; // 模式
     std::string asset_path = "assets/"; // 资源路径
+
+    static StartupConfig& getInstance()
+    {
+        static StartupConfig instance;
+        return instance;
+    }
+    
+private:
+    StartupConfig() = default;
+    StartupConfig(const StartupConfig&) = delete;
+    StartupConfig& operator=(const StartupConfig&) = delete;
+
 };
 
 // 加载startup.json配置文件并解析

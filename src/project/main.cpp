@@ -5,7 +5,7 @@
 
 int main()
 {
-    StartupConfig config;
+    StartupConfig& config = StartupConfig::getInstance();
     if (!loadStartupConfig(config)) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to load startup.json!\n");
         return -1;

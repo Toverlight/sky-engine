@@ -1,6 +1,6 @@
 #include "util.h"
 
-void Graphics::renderTexture(const Texture &texture, const glm::vec2 &position, const glm::vec2 &size, SDL_Renderer* renderer)
+void Graphics::renderTexture(const Texture &texture, const glm::vec2 &position, SDL_Renderer* renderer)
  {
     if (renderer == nullptr || texture.texture == nullptr) {
         return;
@@ -13,10 +13,10 @@ void Graphics::renderTexture(const Texture &texture, const glm::vec2 &position, 
     src_rect.h = texture.clip.h;
 
     SDL_FRect dst_rect;
-    dst_rect.x = position.x - size.x / 2;
-    dst_rect.y = position.y - size.y / 2;
-    dst_rect.w = size.x;
-    dst_rect.h = size.y;
+    dst_rect.x = position.x;
+    dst_rect.y = position.y;
+    dst_rect.w = texture.size.x;
+    dst_rect.h = texture.size.y;
 
     SDL_RenderTextureRotated(renderer, texture.texture, &src_rect, &dst_rect, texture.angle, nullptr, texture.is_flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }
