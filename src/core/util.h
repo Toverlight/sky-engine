@@ -1,10 +1,12 @@
 #pragma once
+#include <SDL3/SDL_rect.h>
 #include <glm/glm.hpp>
 #include "texture.h"
 #include "game.h"
 
 namespace Math {
     glm::vec2 rotateVec2(glm::vec2 v, float radians);
+    float angleBetweenVec2s(glm::vec2 a, glm::vec2 b);
 }
 
 namespace Graphics {
@@ -16,10 +18,13 @@ namespace Graphics {
     // TODO: 添加更多渲染函数
     // 例如：渲染文本、渲染多边形等
     /*
-    绘制线条
-    绘制多个连接的线段
     绘制文本
     */
+
+    void renderLine(const glm::vec2& start, const glm::vec2& end, SDL_FColor color, float thickness, SDL_Renderer* renderer = Game::getInstance().getRenderer());
+    void renderFilledPolygon(const std::vector<SDL_FPoint>& points, SDL_FColor color, SDL_Renderer* renderer = Game::getInstance().getRenderer());
+    // 绘制多边形边框。要求顶点顺时针排列
+    void renderPolygonOutline(const std::vector<SDL_FPoint>& points, SDL_FColor color, float thickness, SDL_Renderer* renderer = Game::getInstance().getRenderer());
 }
 
 namespace Audio {

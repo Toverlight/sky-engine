@@ -1,7 +1,6 @@
 #include "../core/game.h"
 #include "startup_config.h"
 #include "scene_factory.h"
-#include "scene_init.h"
 
 int main()
 {

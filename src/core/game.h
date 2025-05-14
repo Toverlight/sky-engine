@@ -4,6 +4,7 @@
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_mixer/SDL_mixer.h>
+#include <glm/fwd.hpp>
 #include <glm/glm.hpp>
 #include <string>
 #include <random>
@@ -50,6 +51,9 @@ public:
     AssetStore* getAssetStore() { return _asset_store; }
 
     SDL_Renderer* getRenderer() { return _renderer; }
+
+    glm::vec2 getMousePosition() const { return _mouse_position; }
+    SDL_MouseButtonFlags getMouseButtonState() const { return _mouse_button_state; }
 
 private:
     // 私有构造函数

@@ -9,9 +9,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # 设置编译选项
 if (MSVC)
     add_compile_options(/MP)
-    add_compile_options(/W4)
-    add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-    add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+    # add_compile_options(/W4) # MSVC的警告等级。若使用这个，请忽略cl.exe(编译器)的D9025警告
+    add_compile_options(/utf-8)
+    # add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+    # add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 else()
     add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
