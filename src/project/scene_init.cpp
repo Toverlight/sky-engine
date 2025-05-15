@@ -3,21 +3,29 @@
 #include "startup_config.h"
 #include "../core/util.h"
 #include "../core/rect_button.h"
+#include "../core/text_label.h"
 
 void SceneInit::init()
 {
     Scene::init();
+    StartupConfig& config = StartupConfig::getInstance();
+
     ObjectScreen* test_show = new ObjectScreen();
     test_show->init();
-    StartupConfig& config = StartupConfig::getInstance();
     test_show->setPosScreen(glm::vec2(config.window_width / 2, config.window_height / 2));
     toAddChild(test_show);
     auto sprite = Sprite::createAndAffiliate(test_show, "assets/test/koisi.png");
     sprite->setScale(glm::vec2(1.0f));
 
+    ObjectScreen* test_text = new ObjectScreen();
+    test_text->init();
+    test_text->setPosScreen(glm::vec2(550, 80));
+    toAddChild(test_text);
+    TextLabel::createAndAffiliate(test_text, "Hello World!", "assets/test/fonts/ALGER.TTF", 40);
+
     RectButton* test_button = new RectButton();
     test_button->init();
-    test_button->setPosScreen(glm::vec2(config.window_width / 2, config.window_height / 2 + 100));
+    test_button->setPosScreen(glm::vec2(config.window_width - 200, config.window_height / 2 + 100));
     test_button->setSize(glm::vec2(200, 100));
     test_button->setOnHoverCallback([]() {
         SDL_Log("Hovered!\n");

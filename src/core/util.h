@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL3/SDL_rect.h>
+#include <SDL3_ttf/SDL_ttf.h>
 #include <glm/glm.hpp>
 #include "texture.h"
 #include "game.h"
@@ -36,4 +37,8 @@ namespace Audio {
     inline void pauseSound() { Mix_Pause(-1); } // 暂停音效
     inline void resumeMusic() { Mix_ResumeMusic(); } // 恢复音乐
     inline void resumeSound() { Mix_Resume(-1); } // 恢复音效
+}
+
+namespace Text {
+    TTF_Text* createTTF_Text(const std::string& text, const std::string& font_path, int font_size, TTF_TextEngine* ttf_engine = Game::getInstance().getTTF_Engine());
 }

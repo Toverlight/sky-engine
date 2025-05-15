@@ -16,3 +16,11 @@ enum class Anchor
     BOTTOM_CENTER,
     BOTTOM_RIGHT
 };
+
+// TODO:文本对齐功能
+// enum class TextAlign
+// {
+//     LEFT,
+//     CENTER,
+//     RIGHT
+// };

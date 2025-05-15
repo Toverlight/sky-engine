@@ -51,6 +51,7 @@ public:
     AssetStore* getAssetStore() { return _asset_store; }
 
     SDL_Renderer* getRenderer() { return _renderer; }
+    TTF_TextEngine* getTTF_Engine() { return _ttf_engine; }
 
     glm::vec2 getMousePosition() const { return _mouse_position; }
     SDL_MouseButtonFlags getMouseButtonState() const { return _mouse_button_state; }

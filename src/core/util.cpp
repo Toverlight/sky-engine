@@ -1,6 +1,7 @@
 #include "util.h"
 #include <SDL3/SDL_rect.h>
 #include <SDL3/SDL_render.h>
+#include <SDL3_ttf/SDL_ttf.h>
 #include <cstddef>
 #include <glm/common.hpp>
 
@@ -128,3 +129,8 @@ void Graphics::renderPolygonOutline(const std::vector<SDL_FPoint>& points, SDL_F
     SDL_RenderGeometry(renderer, nullptr, outline_vertices.data(), static_cast<int>(outline_vertices.size()), indices.data(), static_cast<int>(indices.size()));
 }
 
+TTF_Text* Text::createTTF_Text(const std::string& text, const std::string& font_path, int font_size, TTF_TextEngine* ttf_engine)
+{
+    auto font = Game::getInstance().getAssetStore()->getFont(font_path, font_size);
+    return TTF_CreateText(ttf_engine, font, text.c_str(), 0);
+}
