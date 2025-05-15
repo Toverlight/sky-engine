@@ -8,6 +8,13 @@ protected:
 
     virtual bool ifMouseInButtonArea(const glm::vec2& mouse_position) override;
 public:
- // TODO
+    RectButton() = default;
+    virtual ~RectButton() = default;
+
+    virtual void render() override;
+
+    void setSize(const glm::vec2& size) {
+        _size = size;
+    }
 
 };

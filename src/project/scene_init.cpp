@@ -2,6 +2,7 @@
 #include "../core/sprite.h"
 #include "startup_config.h"
 #include "../core/util.h"
+#include "../core/rect_button.h"
 
 void SceneInit::init()
 {
@@ -13,6 +14,18 @@ void SceneInit::init()
     toAddChild(test_show);
     auto sprite = Sprite::createAndAffiliate(test_show, "assets/test/koisi.png");
     sprite->setScale(glm::vec2(1.0f));
+
+    RectButton* test_button = new RectButton();
+    test_button->init();
+    test_button->setPosScreen(glm::vec2(config.window_width / 2, config.window_height / 2 + 100));
+    test_button->setSize(glm::vec2(200, 100));
+    test_button->setOnHoverCallback([]() {
+        SDL_Log("Hovered!\n");
+    });
+    test_button->setOnClickCallback([]() {
+        SDL_Log("Clicked!\n");
+    });
+    toAddChild(test_button);
     SDL_Log("SceneInit initialized.\n");
 }
 

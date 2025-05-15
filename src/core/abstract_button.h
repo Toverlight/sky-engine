@@ -19,6 +19,8 @@ public:
     AbstractButton() = default;
     virtual ~AbstractButton() = default;
 
+    virtual void update(float dt) override;
+
     void setMatchingButton(SDL_MouseButtonFlags button) {
         _matching_button = button;
     }
