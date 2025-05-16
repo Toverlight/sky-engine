@@ -4,6 +4,8 @@
 #include "../core/util.h"
 #include "../core/rect_button.h"
 #include "../core/text_label.h"
+#include "../core/cursor_static.h"
+#include <SDL3/SDL_mouse.h>
 
 void SceneInit::init()
 {
@@ -35,6 +37,13 @@ void SceneInit::init()
     });
     toAddChild(test_button);
     SDL_Log("SceneInit initialized.\n");
+
+    CursorStatic* cursor = new CursorStatic("assets/test/cursor/leaf_cursor.png");
+    cursor->init();
+    cursor->setCursorScale(glm::vec2(2.0f));
+    toAddChild(cursor);
+
+    SDL_HideCursor();
 }
 
 bool SceneInit::handleEvents(SDL_Event &event)
