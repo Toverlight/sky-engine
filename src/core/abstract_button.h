@@ -8,6 +8,7 @@ protected:
     bool _is_pressed = false;
     bool _is_hovered = false;
     SDL_MouseButtonFlags _matching_button = SDL_BUTTON_LEFT; // 匹配的鼠标按键
+    static AbstractButton* _focused_button; // 当前聚焦的按钮
     //TODO: bool _is_enabled = true;
     void (*_onClickCallback)() = nullptr; // 点击回调函数
     void (*_onHoverCallback)() = nullptr; // 悬停回调函数
@@ -17,7 +18,7 @@ protected:
 
 public:
     AbstractButton() = default;
-    virtual ~AbstractButton() = default;
+    virtual ~AbstractButton();
 
     virtual void update(float dt) override;
 

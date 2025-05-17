@@ -25,25 +25,38 @@ void SceneInit::init()
     toAddChild(test_text);
     TextLabel::createAndAffiliate(test_text, "Hello World!", "assets/test/fonts/ALGER.TTF", 40);
 
-    RectButton* test_button = new RectButton();
-    test_button->init();
-    test_button->setPosScreen(glm::vec2(config.window_width - 200, config.window_height / 2 + 100));
-    test_button->setSize(glm::vec2(200, 100));
-    test_button->setOnHoverCallback([]() {
-        SDL_Log("Hovered!\n");
+    RectButton* test_button1 = new RectButton();
+    test_button1->init();
+    test_button1->setPosScreen(glm::vec2(config.window_width - 200, config.window_height / 2 + 100));
+    test_button1->setSize(glm::vec2(200, 100));
+    test_button1->setOnHoverCallback([]() {
+        SDL_Log("【1】Hovered!\n");
     });
-    test_button->setOnClickCallback([]() {
-        SDL_Log("Clicked!\n");
+    test_button1->setOnClickCallback([]() {
+        SDL_Log("【1】Clicked!\n");
     });
-    toAddChild(test_button);
-    SDL_Log("SceneInit initialized.\n");
+    toAddChild(test_button1);
+
+    RectButton* test_button2 = new RectButton();
+    test_button2->init();
+    test_button2->setPosScreen(glm::vec2(config.window_width - 200, config.window_height / 2 + 250));
+    test_button2->setSize(glm::vec2(200, 100));
+    test_button2->setOnHoverCallback([]() {
+        SDL_Log("【2】Hovered!\n");
+    });
+    test_button2->setOnClickCallback([]() {
+        SDL_Log("【2】Clicked!\n");
+    });
+    toAddChild(test_button2);
 
     CursorStatic* cursor = new CursorStatic("assets/test/cursor/leaf_cursor.png");
     cursor->init();
     cursor->setCursorScale(glm::vec2(2.0f));
     toAddChild(cursor);
-
+    
     SDL_HideCursor();
+
+    SDL_Log("SceneInit initialized.\n");
 }
 
 bool SceneInit::handleEvents(SDL_Event &event)
