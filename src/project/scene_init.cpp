@@ -5,6 +5,7 @@
 #include "../core/rect_button.h"
 #include "../core/text_label.h"
 #include "../core/cursor_static.h"
+#include "../core/animation.h"
 #include <SDL3/SDL_mouse.h>
 
 void SceneInit::init()
@@ -49,6 +50,13 @@ void SceneInit::init()
     });
     toAddChild(test_button2);
 
+    ObjectScreen* test_animation = new ObjectScreen();
+    test_animation->init();
+    test_animation->setPosScreen(glm::vec2(800, 150));
+    toAddChild(test_animation);
+    auto animation = Animation::createAndAffiliate(test_animation, "assets/test/sprite/ghost-Sheet.png");
+    animation->setScale(glm::vec2(2.0f));
+
     CursorStatic* cursor = new CursorStatic("assets/test/cursor/leaf_cursor.png");
     cursor->init();
     cursor->setCursorScale(glm::vec2(2.0f));
@@ -71,8 +79,8 @@ void SceneInit::update(float dt)
 
 void SceneInit::render()
 {
-    Scene::render();
     Graphics::renderFilledPolygon({{0, 0}, {300, 100}, {300, 300}, {0, 300}}, {0, 1, 0, 1});
     Graphics::renderLine({0, 0}, {300, 300}, {1, 0, 0, 1}, 5);
     Graphics::renderPolygonOutline({{50, 480}, {800, 560}, {900, 700}, {500, 700}}, {0, 0, 1, 1}, 5);
+    Scene::render();
 }
