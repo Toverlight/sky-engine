@@ -18,7 +18,7 @@ public:
     virtual void render() override;
 
     virtual void setTexture(const Texture& texture);
-    Texture getTexture() { return _texture; }
+    const Texture& getTexture() const { return _texture; }
     virtual glm::vec2 getOffset() override;
 
 };

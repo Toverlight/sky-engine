@@ -2,10 +2,10 @@
 #include "../core/sprite.h"
 #include "startup_config.h"
 #include "../core/util.h"
-#include "../core/rect_button.h"
 #include "../core/text_label.h"
 #include "../core/cursor_static.h"
 #include "../core/animation.h"
+#include "../core/sprite_button.h"
 #include <SDL3/SDL_mouse.h>
 
 void SceneInit::init()
@@ -26,29 +26,15 @@ void SceneInit::init()
     toAddChild(test_text);
     TextLabel::createAndAffiliate(test_text, "Hello World!", "assets/test/fonts/ALGER.TTF", 40);
 
-    RectButton* test_button1 = new RectButton();
-    test_button1->init();
-    test_button1->setPosScreen(glm::vec2(config.window_width - 200, config.window_height / 2 + 100));
-    test_button1->setSize(glm::vec2(200, 100));
-    test_button1->setOnHoverCallback([]() {
-        SDL_Log("【1】Hovered!\n");
+    SpriteButton* test_sprite_button = SpriteButton::create("assets/test/UI/A_Start1.png", "assets/test/UI/A_Start2.png", "assets/test/UI/A_Start3.png", glm::vec2(192, 64));
+    test_sprite_button->setPosScreen(glm::vec2(1000, 100));
+    test_sprite_button->setOnHoverCallback([]() {
+        SDL_Log("Button hovered!\n");
     });
-    test_button1->setOnClickCallback([]() {
-        SDL_Log("【1】Clicked!\n");
+    test_sprite_button->setOnClickCallback([]() {
+        SDL_Log("Button clicked!\n");
     });
-    toAddChild(test_button1);
-
-    RectButton* test_button2 = new RectButton();
-    test_button2->init();
-    test_button2->setPosScreen(glm::vec2(config.window_width - 200, config.window_height / 2 + 250));
-    test_button2->setSize(glm::vec2(200, 100));
-    test_button2->setOnHoverCallback([]() {
-        SDL_Log("【2】Hovered!\n");
-    });
-    test_button2->setOnClickCallback([]() {
-        SDL_Log("【2】Clicked!\n");
-    });
-    toAddChild(test_button2);
+    toAddChild(test_sprite_button);
 
     ObjectScreen* test_animation = new ObjectScreen();
     test_animation->init();
@@ -57,9 +43,9 @@ void SceneInit::init()
     auto animation = Animation::createAndAffiliate(test_animation, "assets/test/sprite/ghost-Sheet.png");
     animation->setScale(glm::vec2(2.0f));
 
-    CursorStatic* cursor = new CursorStatic("assets/test/cursor/leaf_cursor.png");
+    CursorStatic* cursor = new CursorStatic("assets/test/UI/pointer_c_shaded.png");
     cursor->init();
-    cursor->setCursorScale(glm::vec2(2.0f));
+    cursor->setCursorScale(glm::vec2(1.5f));
     toAddChild(cursor);
     
     SDL_HideCursor();

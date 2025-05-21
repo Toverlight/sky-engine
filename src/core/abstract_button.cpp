@@ -1,5 +1,6 @@
 #include "abstract_button.h"
 #include "game.h"
+#include "object_screen.h"
 
 AbstractButton* AbstractButton::_focused_button = nullptr;
 
@@ -38,4 +39,5 @@ void AbstractButton::update(float dt)
             _focused_button = nullptr;
         }
     }
+    ObjectScreen::update(dt);
 }

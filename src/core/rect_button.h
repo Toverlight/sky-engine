@@ -11,10 +11,6 @@ public:
     RectButton() = default;
     virtual ~RectButton() = default;
 
-    virtual void render() override;
-
-    void setSize(const glm::vec2& size) {
-        _size = size;
-    }
+    virtual void setSize(const glm::vec2& size) { _size = size; }
 
 };
