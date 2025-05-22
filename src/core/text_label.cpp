@@ -12,13 +12,14 @@ TextLabel::~TextLabel()
     }
 }
 
-TextLabel* TextLabel::createAndAffiliate(ObjectScreen* parent, const std::string& text, const std::string& font_path, int font_size, Anchor anchor)
+TextLabel* TextLabel::createAndAffiliate(ObjectScreen* parent, const std::string& text, const std::string& font_path, int font_size, SDL_FColor color, Anchor anchor)
 {
     auto text_label = new TextLabel();
     text_label->init();
     text_label->setParent(parent);
     text_label->setFont(font_path, font_size);
     text_label->setText(text);
+    text_label->setColor(color);
     text_label->setAnchor(anchor);
     if (parent) parent->toAddChild(text_label);
     return text_label;
@@ -40,6 +41,7 @@ void TextLabel::render()
 {
     ObjectAffiliate::render();
     auto pos = _parent->getPosScreen() + getOffset();
+    TTF_SetTextColorFloat(_ttf_text, _color.r, _color.g, _color.b, _color.a);
     TTF_DrawRendererText(_ttf_text, pos.x, pos.y);
 }
 

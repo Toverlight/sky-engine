@@ -17,14 +17,20 @@ void SceneInit::init()
     test_show->init();
     test_show->setPosScreen(glm::vec2(config.window_width / 2, config.window_height / 2));
     toAddChild(test_show);
-    auto sprite = Sprite::createAndAffiliate(test_show, "assets/test/koisi.png");
-    sprite->setScale(glm::vec2(1.0f));
+    Sprite::createAndAffiliate(test_show, "assets/test/koisi.png", glm::vec2(0.7f));
 
     ObjectScreen* test_text = new ObjectScreen();
     test_text->init();
-    test_text->setPosScreen(glm::vec2(550, 80));
+    test_text->setPosScreen(glm::vec2(610, 80));
     toAddChild(test_text);
-    TextLabel::createAndAffiliate(test_text, "Hello World!", "assets/test/fonts/ALGER.TTF", 40);
+    TextLabel::createAndAffiliate(test_text, "Hello Colorful World!", "assets/test/fonts/ALGER.TTF", 50, { 0.1f, 0.7f, 0.3f, 1.0f }, Anchor::BOTTOM_CENTER);
+    TextLabel::createAndAffiliate(test_text, "Hello Consolas World(", "assets/test/fonts/CONSOLA.TTF", 40, { 0.2f, 0.3f, 0.8f, 1.0f }, Anchor::TOP_CENTER);
+
+    ObjectScreen* test_text2 = new ObjectScreen();
+    test_text2->init();
+    test_text2->setPosScreen(glm::vec2(610, 150));
+    toAddChild(test_text2);
+    TextLabel::createAndAffiliate(test_text2, "请输入文本", "assets/test/fonts/SIMYOU.TTF", 40, { 0.5f, 0.5f, 0.5f, 1.0f }, Anchor::CENTER);
 
     SpriteButton* test_sprite_button = SpriteButton::create("assets/test/UI/A_Start1.png", "assets/test/UI/A_Start2.png", "assets/test/UI/A_Start3.png", glm::vec2(192, 64));
     test_sprite_button->setPosScreen(glm::vec2(1000, 100));
@@ -40,8 +46,7 @@ void SceneInit::init()
     test_animation->init();
     test_animation->setPosScreen(glm::vec2(800, 150));
     toAddChild(test_animation);
-    auto animation = Animation::createAndAffiliate(test_animation, "assets/test/sprite/ghost-Sheet.png");
-    animation->setScale(glm::vec2(2.0f));
+    Animation::createAndAffiliate(test_animation, "assets/test/sprite/ghost-Sheet.png", glm::vec2(2.0f));
 
     CursorStatic* cursor = new CursorStatic("assets/test/UI/pointer_c_shaded.png");
     cursor->init();
