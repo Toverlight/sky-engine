@@ -28,13 +28,7 @@ TextLabel* TextLabel::createAndAffiliate(ObjectScreen* parent, const std::string
 void TextLabel::update(float dt)
 {
     ObjectAffiliate::update(dt);
-    if (_is_size_dirty)
-    {
-        _is_size_dirty = false;
-        int w, h;
-        TTF_GetTextSize(_ttf_text, &w, &h);
-        setSize(glm::vec2(w, h));
-    }
+    refreshTextSize();
 }
 
 void TextLabel::render()
@@ -76,4 +70,15 @@ void TextLabel::setText(const std::string& text)
 {
     TTF_SetTextString(_ttf_text, text.c_str(), text.length());
     _is_size_dirty = true;
+}
+
+void TextLabel::refreshTextSize()
+{
+    if (_is_size_dirty)
+    {
+        _is_size_dirty = false;
+        int w, h;
+        TTF_GetTextSize(_ttf_text, &w, &h);
+        setSize(glm::vec2(w, h));
+    }
 }

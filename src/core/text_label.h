@@ -30,4 +30,6 @@ public:
     int getFontSize() const { return _font_size; }
     std::string getText() const { return _ttf_text ? _ttf_text->text : ""; }
     SDL_FColor getColor() const { return _color; }
+
+    void refreshTextSize();
 };

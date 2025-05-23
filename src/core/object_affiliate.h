@@ -28,4 +28,6 @@ public:
     glm::vec2 getScale() { return _scale; };
     void setAnchor(Anchor anchor);
     Anchor getAnchor() { return _anchor; }
+
+    void refreshOffset();
 };

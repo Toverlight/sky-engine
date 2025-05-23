@@ -6,6 +6,7 @@
 #include "../core/cursor_static.h"
 #include "../core/animation.h"
 #include "../core/sprite_button.h"
+#include "../core/hud_text_static.h"
 #include <SDL3/SDL_mouse.h>
 
 void SceneInit::init()
@@ -15,7 +16,7 @@ void SceneInit::init()
 
     ObjectScreen* test_show = new ObjectScreen();
     test_show->init();
-    test_show->setPosScreen(glm::vec2(config.window_width / 2, config.window_height / 2));
+    test_show->setPosScreen(glm::vec2(config.window_width / 2 + 400, config.window_height / 2 + 100));
     toAddChild(test_show);
     Sprite::createAndAffiliate(test_show, "assets/test/koisi.png", glm::vec2(0.7f));
 
@@ -28,9 +29,12 @@ void SceneInit::init()
 
     ObjectScreen* test_text2 = new ObjectScreen();
     test_text2->init();
-    test_text2->setPosScreen(glm::vec2(610, 150));
+    test_text2->setPosScreen(glm::vec2(610, 170));
     toAddChild(test_text2);
-    TextLabel::createAndAffiliate(test_text2, "请输入文本", "assets/test/fonts/SIMYOU.TTF", 40, { 0.5f, 0.5f, 0.5f, 1.0f }, Anchor::CENTER);
+    TextLabel::createAndAffiliate(test_text2, "请输入文本\n这是第二行", "assets/test/fonts/SIMYOU.TTF", 40, { 0.5f, 0.5f, 0.5f, 1.0f }, Anchor::CENTER);
+
+    HUD_TextStatic* test_hud_text = HUD_TextStatic::create("Hello HUD bulabula,\nthis is the second line~.\nTHE THIRD\nlong long long long long long long\n...", glm::vec2(610, 300), "assets/test/fonts/CONSOLA.TTF", "assets/test/UI/Textfield_01.png", glm::vec2(10, 10), 25, { 0.8f, 0.8f, 0.8f, 1.0f });
+    toAddChild(test_hud_text);
 
     SpriteButton* test_sprite_button = SpriteButton::create("assets/test/UI/A_Start1.png", "assets/test/UI/A_Start2.png", "assets/test/UI/A_Start3.png", glm::vec2(192, 64));
     test_sprite_button->setPosScreen(glm::vec2(1000, 100));

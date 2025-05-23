@@ -8,6 +8,30 @@ void ObjectAffiliate::setOffset(const glm::vec2 &offset)
 
 glm::vec2 ObjectAffiliate::getOffset()
 {
+    refreshOffset();
+    return _offset;
+}
+
+void ObjectAffiliate::setSize(const glm::vec2 &size)
+{
+    _size = size;
+    _is_offset_dirty = true;
+}
+
+void ObjectAffiliate::setScale(const glm::vec2 &scale)
+{
+    _scale = scale;
+    _is_offset_dirty = true;
+}
+
+void ObjectAffiliate::setAnchor(Anchor anchor)
+{
+    _anchor = anchor;
+    _is_offset_dirty = true;
+}
+
+void ObjectAffiliate::refreshOffset()
+{
     if (_is_offset_dirty) {
         _is_offset_dirty = false;
         auto newSize = _size * _scale;
@@ -44,23 +68,4 @@ glm::vec2 ObjectAffiliate::getOffset()
         }
 
     }
-    return _offset;
-}
-
-void ObjectAffiliate::setSize(const glm::vec2 &size)
-{
-    _size = size;
-    _is_offset_dirty = true;
-}
-
-void ObjectAffiliate::setScale(const glm::vec2 &scale)
-{
-    _scale = scale;
-    _is_offset_dirty = true;
-}
-
-void ObjectAffiliate::setAnchor(Anchor anchor)
-{
-    _anchor = anchor;
-    _is_offset_dirty = true;
 }
