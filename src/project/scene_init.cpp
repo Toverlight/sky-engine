@@ -18,7 +18,10 @@ void SceneInit::init()
     test_show->init();
     test_show->setPosScreen(glm::vec2(config.window_width / 2 + 400, config.window_height / 2 + 100));
     toAddChild(test_show);
-    Sprite::createAndAffiliate(test_show, "assets/test/koisi.png", glm::vec2(0.7f));
+    auto sprite = Sprite::createAndAffiliate(test_show, "assets/test/koisi.png", glm::vec2(0.7f));
+    sprite->setAngle(30.0f);
+    sprite->setFlipped(true);
+    sprite->setRotateCenter(glm::vec2(0, 0));
 
     ObjectScreen* test_text = new ObjectScreen();
     test_text->init();
@@ -76,6 +79,6 @@ void SceneInit::render()
 {
     Graphics::renderFilledPolygon({{0, 0}, {300, 100}, {300, 300}, {0, 300}}, {0, 1, 0, 1});
     Graphics::renderLine({0, 0}, {300, 300}, {1, 0, 0, 1}, 5);
-    Graphics::renderPolygonOutline({{50, 480}, {800, 560}, {900, 700}, {500, 700}}, {0, 0, 1, 1}, 5);
+    Graphics::renderPolygonOutline({{50, 480}, {800, 560}, {950, 700}, {500, 700}}, {0, 0, 1, 1}, 5);
     Scene::render();
 }

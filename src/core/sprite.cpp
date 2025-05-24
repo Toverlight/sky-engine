@@ -1,5 +1,7 @@
 #include "sprite.h"
 #include "util.h"
+#include <glm/common.hpp>
+#include <glm/fwd.hpp>
 
 Sprite *Sprite::createAndAffiliate(ObjectScreen *parent, const std::string &texture_path, const glm::vec2& scale, Anchor anchor)
 {
@@ -32,3 +34,4 @@ glm::vec2 Sprite::getOffset()
     if (_is_offset_dirty) _texture.size = _size * _scale;
     return ObjectAffiliate::getOffset();
 }
+

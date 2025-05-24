@@ -24,6 +24,7 @@ class Game
 
     Uint64 _FPS = 60; // 游戏帧率
     Uint64 _frame_delay = 0; // 帧延迟，单位ns
+    float _frame_delay_seconds = 0.0f; // 帧延迟，单位s
     float _dt = 0.0f; // 帧间隔
 
     SDL_Window* _window = nullptr; // 游戏窗口

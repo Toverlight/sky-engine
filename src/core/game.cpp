@@ -21,7 +21,7 @@ void Game::run(Scene* scene)
         auto elapsed = end - start;
         if (elapsed < _frame_delay) {
             SDL_DelayNS(_frame_delay - elapsed);
-            _dt = static_cast<float>(_frame_delay / 1.0e9);
+            _dt = _frame_delay_seconds;
         } else {
             _dt = static_cast<float>(elapsed / 1.0e9);
         }
@@ -138,6 +138,7 @@ void Game::init(std::string title, int width, int height)
 
     // 计算帧延迟
     _frame_delay = 1000000000 / _FPS;
+    _frame_delay_seconds = static_cast<float>(_frame_delay / 1.0e9);
 
     // 创建资源管理器
     _asset_store = new AssetStore(_renderer);

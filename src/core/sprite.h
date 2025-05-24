@@ -20,5 +20,8 @@ public:
     virtual void setTexture(const Texture& texture);
     const Texture& getTexture() const { return _texture; }
     virtual glm::vec2 getOffset() override;
+    void setAngle(float angle) { _texture.angle = angle; }
+    void setFlipped(bool flipped) { _texture.is_flipped = flipped; }
+    void setRotateCenter(const glm::vec2& center) { _texture.center = center; };
 
 };

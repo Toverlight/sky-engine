@@ -42,7 +42,11 @@ void Graphics::renderTexture(const Texture &texture, const glm::vec2 &position, 
     dst_rect.w = texture.size.x;
     dst_rect.h = texture.size.y;
 
-    SDL_RenderTextureRotated(renderer, texture.texture, &src_rect, &dst_rect, texture.angle, nullptr, texture.is_flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+    SDL_FPoint center;
+    center.x = texture.center.x;
+    center.y = texture.center.y;
+
+    SDL_RenderTextureRotated(renderer, texture.texture, &src_rect, &dst_rect, texture.angle, &center, texture.is_flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }
 
 void Graphics::renderLine(const glm::vec2& start, const glm::vec2& end, SDL_FColor color, float thickness, SDL_Renderer* renderer)
