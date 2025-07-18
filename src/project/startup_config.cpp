@@ -1,12 +1,22 @@
 #include "startup_config.h"
+#include <filesystem>
 #include <fstream>
-#include <json.hpp>
+#include <iostream>
+#include <nlohmann/json.hpp>
+
+namespace fs = std::filesystem;
 
 bool loadStartupConfig(StartupConfig &config)
 {
     try {
-        std::ifstream in("config/startup.json");
+        // 获取可执行文件路径（编译器相关）
+        fs::path exePath = fs::current_path(); // 当前工作目录
+        std::cerr << "Current working directory: " << exePath << std::endl;
+        fs::path configPath = exePath / "config" / "project" / "startup.json";
+
+        std::ifstream in(configPath);
         if (!in.is_open()) {
+            std::cerr << "Failed to open startup.json file." << std::endl;
             return false;
         }
         nlohmann::json j;
@@ -24,6 +34,7 @@ bool loadStartupConfig(StartupConfig &config)
 
         return true;
     } catch (...) {
+        std::cerr << "Error loading startup configuration." << std::endl;
         return false;
     }
 }

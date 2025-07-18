@@ -2,6 +2,7 @@
 .cache/
 assets/
 build/
+src/editor/example/
 *.exe
 *.pdb
 *.ilk

@@ -1,6 +1,6 @@
 # 标题
 cmake_minimum_required(VERSION 3.10.0)
-project(SKYPROJECT VERSION 0.1.0 LANGUAGES C CXX)
+project(SKYENGINE VERSION 0.1.0 LANGUAGES C CXX)
 
 # 设置C++标准
 set(CMAKE_CXX_STANDARD 17)
@@ -17,36 +17,13 @@ else()
     add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+include_directories(src/dep)
+
 # 设置编译输出目录
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_SOURCE_DIR})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_SOURCE_DIR})
 
-set(TARGET ${PROJECT_NAME}-${CMAKE_SYSTEM_NAME})
-
-# 查找并载入Cmake预设
-find_package(SDL3 REQUIRED)
-find_package(SDL3_image REQUIRED)
-find_package(SDL3_mixer REQUIRED)
-find_package(SDL3_ttf REQUIRED)
-find_package(glm REQUIRED)
-
-include_directories(src/dep)
-
-file(GLOB SOURCES 
-    src/core/*.cpp 
-    src/project/*.cpp
-    )
-
-message("Source files: ${SOURCES}")
-
-# 添加可执行文件
-add_executable(${TARGET} ${SOURCES})
-
-# 链接库
-target_link_libraries(${TARGET}
-                        ${SDL3_LIBRARIES}
-                        SDL3_image::SDL3_image
-                        SDL3_mixer::SDL3_mixer
-                        SDL3_ttf::SDL3_ttf
-                        glm::glm
-                        )
+add_subdirectory(src/core)
+add_subdirectory(src/dep/imgui)
+add_subdirectory(src/project)
+add_subdirectory(src/editor)
